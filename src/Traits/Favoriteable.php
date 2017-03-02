@@ -69,6 +69,17 @@ trait Favoriteable
 	}
 
 	/**
+	 * Check if the user's TEAM has favorited this Object
+	 *
+	 * @param  int $team_id
+	 * @return boolean
+	 */
+	public function isTeamFavorited($team_id = null)
+	{
+		return $this->favorites()->where('team_id', $team_id)->exists();
+	}
+
+	/**
      * Return a collection with the Users who marked as favorite this Object.
      *
      * @return Collection
