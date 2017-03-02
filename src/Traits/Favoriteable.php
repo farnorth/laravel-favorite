@@ -32,8 +32,8 @@ trait Favoriteable
 	 */
 	public function addFavorite($user_id = null)
 	{
-		$favorite = new Favorite(['user_id' => ($user_id) ? $user_id : Auth::id()]);
-		$this->favorites()->save($favorite,['team_id' => Auth::user()->current_team_id]);
+		$favorite = new Favorite(['user_id' => ($user_id) ? $user_id : Auth::id(), 'team_id' => Auth::user()->current_team_id]);
+		$this->favorites()->save($favorite);
 	}
 
 	/**
