@@ -27,20 +27,20 @@ trait Favoriteable
 
 	/**
 	 * Add this Object to the user favorites
-	 * 
+	 *
 	 * @param  int $user_id  [if  null its added to the auth user]
 	 */
 	public function addFavorite($user_id = null)
 	{
 		$favorite = new Favorite(['user_id' => ($user_id) ? $user_id : Auth::id()]);
-		$this->favorites()->save($favorite);
+		$this->favorites()->save($favorite,['team_id' => Auth::user()->current_team_id]);
 	}
 
 	/**
 	 * Remove this Object from the user favorites
 	 *
 	 * @param  int $user_id  [if  null its added to the auth user]
-	 * 
+	 *
 	 */
 	public function removeFavorite($user_id = null)
 	{
@@ -49,7 +49,7 @@ trait Favoriteable
 
 	/**
 	 * Toggle the favorite status from this Object
-	 * 
+	 *
 	 * @param  int $user_id  [if  null its added to the auth user]
 	 */
 	public function toggleFavorite($user_id = null)
@@ -59,7 +59,7 @@ trait Favoriteable
 
 	/**
 	 * Check if the user has favorited this Object
-	 * 
+	 *
 	 * @param  int $user_id  [if  null its added to the auth user]
 	 * @return boolean
 	 */
@@ -70,7 +70,7 @@ trait Favoriteable
 
 	/**
      * Return a collection with the Users who marked as favorite this Object.
-     * 
+     *
      * @return Collection
      */
 	public function favoritedBy()
@@ -82,7 +82,7 @@ trait Favoriteable
 
 	/**
 	 * Count the number of favorites
-	 * 
+	 *
 	 * @return int
 	 */
 	public function getFavoritesCountAttribute()
