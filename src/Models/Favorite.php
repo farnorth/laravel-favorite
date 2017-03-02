@@ -27,7 +27,7 @@ class Favorite extends Model
      *
      * @var array
      */
-	protected $fillable = ['user_id'];
+	protected $fillable = ['user_id','team_id'];
 
 	/**
      * Define a polymorphic, inverse one-to-one or many relationship.
@@ -42,5 +42,10 @@ class Favorite extends Model
 	public function user()
     {
         return $this->belongsTo(Config::get('auth.providers.users.model'));
+    }
+
+	public function team()
+    {
+        return $this->belongsTo(Team::class);
     }
 }
