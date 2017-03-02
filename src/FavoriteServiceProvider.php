@@ -16,17 +16,18 @@ class FavoriteServiceProvider extends ServiceProvider
 {
 	/**
 	 * Bootstrap the application services.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function boot()
 	{
-		$this->loadMigrationsFrom(__DIR__.'/../migrations');
+		//$this->loadMigrationsFrom(__DIR__.'/../migrations');
+		$this->publishMigrations();
 	}
 
 	/**
 	 * Register the application services.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function register()
